@@ -18,7 +18,8 @@ Since ports are based on the original source code of the library, we need to pre
 
 ```
 cd <genode-dir>
-./tool/ports/prepare_port libmosquitto libprotobuf
+./tool/ports/prepare_port libmosquitto
+./tool/ports/prepare_port libprotobuf
 ```
 
 This automatically downloads the original source code and prepares the libraries, meaning extracts the code if necessary and applies any required patches.
@@ -28,9 +29,13 @@ Since both libraries do have some dependencies on other libraries, we need to pr
 ```
 cd <genode-dir>
 # for libprotobuf
-./tool/ports/prepare_port libc stdcxx
+./tool/ports/prepare_port libc
+./tool/ports/prepare_port stdcxx
 # for libmosquitto
-./tool/ports/prepare_port libc lwip openssl stdcxx
+./tool/ports/prepare_port libc
+./tool/ports/prepare_port stdcxx
+./tool/ports/prepare_port lwip
+./tool/ports/prepare_port openssl
 ```
 
 ## Testing a library
@@ -57,8 +62,12 @@ One can now use the libraries more or less the same way one would use them on li
 
 In general one needs to make the following changes in its Genode application repository:
 
-- Add **libprotobuf** and/or **libmosquitto** to the `LIBS` variable in `<application-dir>/src/<application-name>/target.mk`
-- Add **libprotobuf.lib.so** and/or **libmosquitto.lib.so** to `build_boot_image` in `<application-dir>/run/<application-name>.run` along with any other needed dependencies, like **libc.lib.so**, etc.
+- Add **libprotobuf** and/or **libmosquitto** to the `LIBS` variable in `<application-dir>/src/<application-name>/target.mk` along with any other needed dependencies
+    - For **libprotobuf**: **stdcxx pthread**
+    - For **libmosquitto**: **stdcxx pthread lwip**
+- Add **libprotobuf.lib.so** and/or **libmosquitto.lib.so** to `build_boot_image` in `<application-dir>/run/<application-name>.run` along with any other needed dependencies
+    - For **libprotobuf**: **ld.lib.so libc.lib.so stdcxx.lib.so libm.lib.so pthread.lib.so**
+    - For **libmosquitto**: **ld.lib.so libc.lib.so stdcxx.lib.so libm.lib.so pthread.lib.so lwip.lib.so libssl.lib.so libcrypto.lib.so**
 - Add includes as needed to the src files in `<application-dir>/src/<application-name>/` e.g. `#include <mosquittopp.h>` for libmosquitto.
 
 ### libprotobuf
