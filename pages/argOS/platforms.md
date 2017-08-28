@@ -171,3 +171,36 @@ Execute the following steps
 sudo make vde
 sudo make run
 ```
+
+## Digilent Zybo
+### Building u-boot
+* Follow the following guide: [Booting Linux on the ZYBO](http://www.dbrss.org/zybo/tutorial4.html)
+
+### Building Genode
+**Zybo support is not yet integrated in the focnados-1608 branch, but in the focnados-zybo branch! **
+```sh
+./tool/create_builddir focnados_zybo
+cd build/focnados_zybo
+echo "RUN_OPT += --include image/uboot" >> etc/build.conf
+echo "REPOSITORIES += \$(GENODE_DIR)/repos/hello_tutorial" >> etc/build.conf
+echo "MAKE += -j4" >> etc/build.conf # increase number of jobs for make
+make run/hello
+```
+
+### Running Genode
+* Copy **boot.bin** and **uImage** to the SD-Card
+* Boot up the Zybo with the SD-Card
+
+**The following steps need to be done only once:**
+* Interrupt the auto boot of u-boot and execute the following commands
+```sh
+sf probe
+sf erase 0 0x1000000
+env default -a
+setenv bootcmd "echo Copying Fiasco.OC/Genode from SD to RAM... && fatload mmc 0:1 0x00100000 uImage && echo Booting Fiasco.OC/Genode... && bootm 0x00100000"
+saveenv
+boot
+```
+
+### Pre-compiled files
+* [genode.img.tgz](https://nextcloud.os.in.tum.de/s/tyTDcIWpCMCnZ0J)
