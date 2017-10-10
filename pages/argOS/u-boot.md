@@ -52,6 +52,9 @@ sudo mkfs.fat -n GENODE /dev/null # replace /dev/null with the first partition o
 cp ../u-boot-dtb.bin u-boot.bin
 sh sd_fusing.sh /dev/null # replace /dev/null with your SD card
 ```
+**No** files need to be copied on the SD card afterwards!
+U-Boot was written at a specific location on the SD card by the script.
+
 #### TFTP boot
 ```sh
 # configure an ethernet address
@@ -65,8 +68,37 @@ saveenv
 
 ### Raspberry Pi Model 1 B(+)
 ```sh
+# select and compile for rpi model 1 b(+)
 make rpi_defconfig
 make
+# prepare SD card
+echo "o\nn\np\n1\n\n+8G\nt\n0c\nw\n" | sudo fdisk /dev/null # replace /dev/null with your SD card
+sudo mkfs.fat -n GENODE /dev/null # replace /dev/null with the first partition of your SD card
+```
+
+Plase copy the `u-boot.bin` file onto the SD card.
+
+Afterwards create `config.txt` on the SD card with the following content:
+```ini
+kernel=u-boot.bin
+enable_uart=1
+init_uart_baud=115200
+init_uart_clock=3000000 # this line is important
+```
+
+Additionally some files from the binary blobs need to be copied onto the SD card:
+- bootcode.bin
+- start.elf
+Please get the from [here](https://github.com/raspberrypi/firmware/tree/1.20170811/boot)
+
+#### TFTP boot
+```sh
+# configure an ethernet address
+setenv ethaddr 02:DE:AD:BE:EF:FF
+# change bootcmd to boot via dhcp
+setenv bootcmd 'usb reset; dhcp ${loadaddr}; bootelf ${loadaddr}'
+# save settings on the SD card
+saveenv
 ```
 
 ### Avnet ZedBoard
