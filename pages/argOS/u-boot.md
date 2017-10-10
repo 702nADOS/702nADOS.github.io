@@ -10,8 +10,8 @@ folder: "argOS"
 ---
 
 # U-Boot
-This page describes how to build (mainline) U-Boot for various platforms, used by the argos-research project.
-Already prepared images can be found at the bottom of the page.
+This page describes how to build (mainline) U-Boot for various platforms used by the argos-research project.
+Already prepared images can be found [at the bottom of the page](#prepared-images).
 
 ## Preparation
 ```sh
@@ -81,7 +81,7 @@ make zynq_zybo_defconfig
 make
 ```
 
-## Prepared Images
+## <a name='prepared-images'></a>Prepared Images
 - [Hardkernel ODROID-U3](https://nextcloud.os.in.tum.de/s/66hmk6s8kxCjS2x/download)
 - [Raspberry Pi Model 1 B(+)]()
 - [Avnet ZedBoard]()
