@@ -82,7 +82,7 @@ make
 ```
 
 ## Prepared Images
-- [Hardkernel ODROID-U3](https://nextcloud.os.in.tum.de/s/66hmk6s8kxCjS2x)
+- [Hardkernel ODROID-U3](https://nextcloud.os.in.tum.de/s/66hmk6s8kxCjS2x/download)
 - [Raspberry Pi Model 1 B(+)]()
 - [Avnet ZedBoard]()
 - [Digilent Zybo]()
