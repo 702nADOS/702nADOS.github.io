@@ -11,8 +11,8 @@ folder: "argOS"
 
 # General Instructions (local)
 1. Build the OS depending on your platform
-3. Get any prepared files if required (see *Pre-compiled files* section of each platform)
-2. Prepare the SD card (see [Setup SD-Card](/platforms.html#setup-sd-card))
+2. Get any prepared files if required (see *Pre-compiled files* section of each platform)
+3. Prepare the SD card (see [Setup SD-Card](platforms.html#setup-sd-card))
 4. Copy your project files to the SD Card
 
 ## Build the OS depending on your platform
@@ -136,10 +136,10 @@ Further (deeper) information about this topic can be found under the following l
 ## Raspberry PI Model B+
 
 ### Select correct target device
-Change `GENODE_TARGET` inside the `Makefile` to `foc_rpi`
+Change `GENODE_TARGET` inside the `Makefile` to `focnados_rpi`
 
 ```make
-GENODE_TARGET = foc_rpi
+GENODE_TARGET = focnados_rpi
 ```
 
 ### Flash (PXE Version)
@@ -148,7 +148,7 @@ GENODE_TARGET = foc_rpi
 sudo dd if=./RaspberryPiU-Boot.img of=/dev/mmcblk0 bs=4M
 ```
 
-For further PXE/tftp instructions [pxe/tftp](/pxe.html) section.
+For further PXE/tftp instructions [pxe/tftp](pxe.html) section.
 
 ### Pre-compiled files
 * [RaspberryPiU-Boot.img](https://nextcloud.os.in.tum.de/s/xAxEQYA57SIhnhz)
