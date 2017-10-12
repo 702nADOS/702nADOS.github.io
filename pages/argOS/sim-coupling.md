@@ -14,7 +14,7 @@ folder: "argOS"
 In order to download, compile and start the simulation environment, run the following commands.
 
 **Caution:** The following dependencies need to be installed on Ubuntu, in order to successfully run the script:
-<pre>
+```sh
 # General
 sudo apt-get install tmux
 # SUMO
@@ -27,9 +27,10 @@ libplib-dev libopenal-dev libvorbis-dev libpng12-dev \
 libenet-dev libboost-all-dev protobuf-compiler libprotobuf-dev
 # SimCoupler
 sudo apt-get install -q=2 make cmake g++ \
-libboost-all-dev protobuf-compiler libprotobuf-dev</pre>
+libboost-all-dev protobuf-compiler libprotobuf-dev
+```
 
-<pre>
+```sh
 # clone the testbed repository
 git clone https://github.com/argos-research/testbed.git
 # change directory to testbed
@@ -39,10 +40,12 @@ git checkout simcoupler
 # change directory to startup-scripts
 cd startup-scripts
 # run the shell script
-./sim_env.sh</pre>
+./sim_env.sh
+```
 
 # File Structure
-<pre>+-- src
+```
++-- src
 |   +-- main.cc
 |   +-- sd2.cc
 |   +-- sumo.cc
@@ -53,7 +56,8 @@ cd startup-scripts
 |   +-- sumo.hh
 |   +-- ...
 +-- protobuf-messages
-+-- CMakeLists.txt</pre>
++-- CMakeLists.txt
+```
 
 The `src` directory contains all modules of the SimCoupler and the loop itself.
 If you want to add additional modules, just add them to the `src` directory.
@@ -64,10 +68,12 @@ The protobuf-messages submodule contains all message definitions exchanged by th
 # Compilation
 The SimCoupler can be compiled by issuing the following commands
 in the directory of the SimCoupler:
-<pre>mkdir -p build
+```sh
+mkdir -p build
 cd build
 cmake ../
-make -j</pre>
+make -j
+```
 
 # Dependencies
 To run the simulation, a few repositories are needed
