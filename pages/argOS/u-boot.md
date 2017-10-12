@@ -64,6 +64,7 @@ setenv usbethaddr 02:DE:AD:BE:EF:FF
 setenv bootcmd 'usb reset; usb reset; dhcp ${scriptaddr}; usb reset; usb stop; bootelf ${scriptaddr}'
 # save settings on the SD card
 saveenv
+reset
 ```
 
 ### Raspberry Pi Model 1 B(+)
@@ -76,7 +77,7 @@ echo "o\nn\np\n1\n\n+8G\nt\n0c\nw\n" | sudo fdisk /dev/null # replace /dev/null 
 sudo mkfs.fat -n GENODE /dev/null # replace /dev/null with the first partition of your SD card
 ```
 
-Plase copy the `u-boot.bin` file onto the SD card.
+Plase copy the generated `u-boot.bin` file onto the SD card.
 
 Afterwards create `config.txt` on the SD card with the following content:
 ```ini
@@ -89,7 +90,8 @@ init_uart_clock=3000000 # this line is important
 Additionally some files from the binary blobs need to be copied onto the SD card:
 - bootcode.bin
 - start.elf
-Please get the from [here](https://github.com/raspberrypi/firmware/tree/1.20170811/boot)
+
+Please get them from [here](https://github.com/raspberrypi/firmware/tree/1.20170811/boot).
 
 #### TFTP boot
 ```sh
@@ -99,22 +101,72 @@ setenv ethaddr 02:DE:AD:BE:EF:FF
 setenv bootcmd 'usb reset; dhcp ${loadaddr}; bootelf ${loadaddr}'
 # save settings on the SD card
 saveenv
+reset
 ```
 
 ### Avnet ZedBoard
 ```sh
+# select and compile for rpi model 1 b(+)
 make zynq_zed_defconfig
 make
+# prepare SD card
+echo "o\nn\np\n1\n\n+8G\nt\n0c\nw\n" | sudo fdisk /dev/null # replace /dev/null with your SD card
+sudo mkfs.fat -n GENODE /dev/null # replace /dev/null with the first partition of your SD card
+```
+
+Please copy the generated `spl/boot.bin`, `spl/u-boot-spl.bin` and `u-boot.img` files onto the SD card.
+
+#### TFTP boot
+```sh
+# configure an ethernet address
+setenv ethaddr 02:DE:AD:BE:EF:FF
+# change bootcmd to boot via dhcp
+setenv bootcmd 'dhcp ${scriptaddr}; bootelf ${scriptaddr}'
+# save settings on the SD card
+saveenv
+reset
 ```
 
 ### Digilent Zybo
 ```sh
+# download and extra base_system_design.zip
+curl -o zybo_base_system.zip https://nextcloud.os.in.tum.de/s/MprLJQ43K5vpgzw/download
+unzip zybo_base_system.zip
+# copy the init files into the u-boot file tree
+cp zybo_base_system/source/vivado/SDK/hw_platform/ps7_init.h board/xilinx/zynq/zynq-zybo/ps7_init.h
+cp zybo_base_system/source/vivado/SDK/hw_platform/ps7_init.c board/xilinx/zynq/zynq-zybo/ps7_init_gpl.c
+# select and compile for rpi model 1 b(+)
 make zynq_zybo_defconfig
 make
+# prepare SD card
+echo "o\nn\np\n1\n\n+8G\nt\n0c\nw\n" | sudo fdisk /dev/null # replace /dev/null with your SD card
+sudo mkfs.fat -n GENODE /dev/null # replace /dev/null with the first partition of your SD card
+```
+
+Please copy the generated `spl/boot.bin`, `spl/u-boot-spl.bin` and `u-boot.img` files onto the SD card.
+
+#### TFTP boot
+```sh
+# configure an ethernet address
+setenv ethaddr 02:DE:AD:BE:EF:FF
+# change bootcmd to boot via dhcp
+setenv bootcmd 'dhcp ${scriptaddr}; bootelf ${scriptaddr}'
+# save settings on the SD card
+saveenv
+reset
 ```
 
 ## <a name='prepared-images'></a>Prepared Images
+Install the images via
+```sh
+# extract the *.tgz
+tar xfz file.img.tgz
+# dd' it onto the SD card
+dd of=/dev/null if=file.img # replace /dev/null with your SD card
+```
+Every image is configured to use the `02:DE:AD:BE:EF:FF` ethernet address and boot via dhcp (expects a `*.elf` file!).
+
 - [Hardkernel ODROID-U3](https://nextcloud.os.in.tum.de/s/66hmk6s8kxCjS2x/download)
-- [Raspberry Pi Model 1 B(+)]()
-- [Avnet ZedBoard]()
-- [Digilent Zybo]()
+- [Raspberry Pi Model 1 B(+)](https://nextcloud.os.in.tum.de/s/vVRFCh74B499P2W/download)
+- [Avnet ZedBoard](https://nextcloud.os.in.tum.de/s/TsZNontFhgigiBg/download)
+- [Digilent Zybo](https://nextcloud.os.in.tum.de/s/uNhs1VhfSsM0OdF/download)
