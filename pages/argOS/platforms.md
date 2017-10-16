@@ -158,6 +158,34 @@ For further PXE/tftp instructions [pxe/tftp](pxe.html) section.
 
 
 
+## Hardkernel ODROID-U3
+
+### Select correct target device
+Change `GENODE_TARGET` inside the `Makefile` to `focnados_odroid-u3`
+
+```make
+GENODE_TARGET = focnados_odroid-u3
+```
+
+### Flash (PXE Version)
+You can download an already prepared image from [here](u-boot.html#prepared-images).
+See [U-Boot](u-boot.html#hardkernel-odroid-u3) on how to build U-Boot for this platform and configuring the SD card.
+
+## Avnet ZedBoard & Digilent Zybo
+
+### Select correct target device
+Change `GENODE_TARGET` inside the `Makefile` to `focnados_zybo`
+
+``` make
+GENODE_TARGET = focnados_zybo
+```
+
+The **same** target is used for both boards but a **different** u-boot version is necessary per board.
+
+### Flash (PXE Version)
+You can download an already prepared image from [here](u-boot.html#prepared-images)
+See [U-Boot#Avnet-ZedBoard](u-boot.html#avnet-zedboard) or [U-Boot#Digilent-Zybo](u-boot.html#digilent-zybo) on how to build U-Boot for both platforms and configuring the SD card.
+
 ## QEMU (PBXA9)
 ### Select correct target device
 
@@ -168,6 +196,30 @@ GENODE_TARGET = focnados_pbxa9
 ### Building
 Execute the following steps
 ```sh
+sudo make vde
+sudo make run
+```
+
+## QEMU (Zed & Zybo)
+### Select correct target device
+
+``` make
+GENODE_TARGET = focnados_zybo
+```
+
+Additionally two files in the build directory need some small additions
+``` sh
+# if you are using jenkins_build_dir...
+echo "RUN_OPT += --include power_on/qemu --include log/qemu" >> build/genode-focnados_zybo/etc/build.conf
+echo "SPECS += zynq_qemu" >> build/genode-focnados_zybo/etc/specs.conf
+# ... and if you are using build_dir
+echo "RUN_OPT += --include power_on/qemu --include log/qemu" >> /build/genode-focnados_zybo/etc/build.conf
+echo "SPECS += zynq_qemu" >> /build/genode-focnados_zybo/etc/specs.conf
+```
+
+### Building
+Execute the following steps
+``` sh
 sudo make vde
 sudo make run
 ```
