@@ -206,3 +206,20 @@ sudo make run
 ``` make
 GENODE_TARGET = focnados_zybo
 ```
+
+Additionally two files in the build directory need some small additions
+``` sh
+# if you are using jenkins_build_dir...
+echo "RUN_OPT += --include power_on/qemu --include log/qemu" >> build/genode-focnados_zybo/etc/build.conf
+echo "SPECS += zynq_qemu" >> build/genode-focnados_zybo/etc/specs.conf
+# ... and if you are using build_dir
+echo "RUN_OPT += --include power_on/qemu --include log/qemu" >> /build/genode-focnados_zybo/etc/build.conf
+echo "SPECS += zynq_qemu" >> /build/genode-focnados_zybo/etc/specs.conf
+```
+
+### Building
+Execute the following steps
+``` sh
+sudo make vde
+sudo make run
+```
