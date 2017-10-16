@@ -168,7 +168,7 @@ GENODE_TARGET = focnados_odroid-u3
 ```
 
 ### Flash (PXE Version)
-You can download an already prepared image from [u-boot.html#prepared-images](here).
+You can download an already prepared image from [here](u-boot.html#prepared-images).
 See [U-Boot](u-boot.html#hardkernel-odroid-u3) on how to build U-Boot for this platform and configuring the SD card.
 
 ## Avnet ZedBoard & Digilent Zybo
@@ -183,7 +183,7 @@ GENODE_TARGET = focnados_zybo
 The **same** target is used for both boards but a **different** u-boot version is necessary per board.
 
 ### Flash (PXE Version)
-You can download an already prepared image from [u-boot.html#prepared-images](here).
+You can download an already prepared image from [here](u-boot.html#prepared-images)
 See [U-Boot#Avnet-ZedBoard](u-boot.html#avnet-zedboard) or [U-Boot#Digilent-Zybo](u-boot.html#digilent-zybo) on how to build U-Boot for both platforms and configuring the SD card.
 
 ## QEMU (PBXA9)
