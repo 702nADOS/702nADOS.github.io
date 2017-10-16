@@ -1,19 +1,16 @@
 ---
 title: U-Boot
 keywords: u-boot, development, install
-last_updated: October 09, 2017
+last_updated: October 16, 2017
 tags: [development]
-summary: ""
+summary: "This page describes how to build (mainline) U-Boot for various platforms used by the argos-research project.
+Already prepared images can be found [at the bottom of the page](#prepared-images)."
 sidebar: main_sidebar
 permalink: u-boot.html
 folder: "argOS"
 ---
 
-# U-Boot
-This page describes how to build (mainline) U-Boot for various platforms used by the argos-research project.
-Already prepared images can be found [at the bottom of the page](#prepared-images).
-
-## Preparation
+# Preparation
 ```sh
 # get u-boot source code
 git clone --depth 1 --branch argos-research https://github.com/argos-research/u-boot.git
@@ -25,8 +22,8 @@ export PATH=$(pwd)/gcc-linaro-5.4.1-2017.05-x86_64_arm-eabi/bin:$PATH
 export CROSS_COMPILE=arm-eabi-
 ```
 
-## Compile And Configure
-### Hardkernel ODROID-U3
+# Compile And Configure
+## Hardkernel ODROID-U3
 ```sh
 # select and compile for droid-u3
 make odroid_defconfig
@@ -55,7 +52,7 @@ sh sd_fusing.sh /dev/null # replace /dev/null with your SD card
 **No** files need to be copied on the SD card afterwards!
 U-Boot was written at a specific location on the SD card by the script.
 
-#### TFTP boot
+### TFTP boot
 ```sh
 # configure an ethernet address
 setenv usbethaddr 02:DE:AD:BE:EF:FF
@@ -67,7 +64,7 @@ saveenv
 reset
 ```
 
-### Raspberry Pi Model 1 B(+)
+## Raspberry Pi Model 1 B(+)
 ```sh
 # select and compile for rpi model 1 b(+)
 make rpi_defconfig
@@ -93,7 +90,7 @@ Additionally some files from the binary blobs need to be copied onto the SD card
 
 Please get them from [here](https://github.com/raspberrypi/firmware/tree/1.20170811/boot).
 
-#### TFTP boot
+### TFTP boot
 ```sh
 # configure an ethernet address
 setenv ethaddr 02:DE:AD:BE:EF:FF
@@ -104,7 +101,7 @@ saveenv
 reset
 ```
 
-### Avnet ZedBoard
+## Avnet ZedBoard
 ```sh
 # select and compile for rpi model 1 b(+)
 make zynq_zed_defconfig
@@ -116,7 +113,7 @@ sudo mkfs.fat -n GENODE /dev/null # replace /dev/null with the first partition o
 
 Please copy the generated `spl/boot.bin`, `spl/u-boot-spl.bin` and `u-boot.img` files onto the SD card.
 
-#### TFTP boot
+### TFTP boot
 ```sh
 # configure an ethernet address
 setenv ethaddr 02:DE:AD:BE:EF:FF
@@ -127,7 +124,7 @@ saveenv
 reset
 ```
 
-### Digilent Zybo
+## Digilent Zybo
 ```sh
 # download and extra base_system_design.zip
 curl -o zybo_base_system.zip https://nextcloud.os.in.tum.de/s/MprLJQ43K5vpgzw/download
@@ -145,7 +142,7 @@ sudo mkfs.fat -n GENODE /dev/null # replace /dev/null with the first partition o
 
 Please copy the generated `spl/boot.bin`, `spl/u-boot-spl.bin` and `u-boot.img` files onto the SD card.
 
-#### TFTP boot
+### TFTP boot
 ```sh
 # configure an ethernet address
 setenv ethaddr 02:DE:AD:BE:EF:FF
@@ -156,7 +153,7 @@ saveenv
 reset
 ```
 
-## <a name='prepared-images'></a>Prepared Images
+# Prepared Images<a name='prepared-images'></a>
 Install the images via
 ```sh
 # extract the *.tgz
