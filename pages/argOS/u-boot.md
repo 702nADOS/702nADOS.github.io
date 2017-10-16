@@ -4,7 +4,7 @@ keywords: u-boot, development, install
 last_updated: October 16, 2017
 tags: [development]
 summary: "This page describes how to build (mainline) U-Boot for various platforms used by the argos-research project.
-Already prepared images can be found [at the bottom of the page](#prepared-images)."
+Already prepared images can be found at the bottom of the page."
 sidebar: main_sidebar
 permalink: u-boot.html
 folder: "argOS"
@@ -153,7 +153,7 @@ saveenv
 reset
 ```
 
-# Prepared Images<a name='prepared-images'></a>
+# Prepared Images
 Install the images via
 ```sh
 # extract the *.tgz
