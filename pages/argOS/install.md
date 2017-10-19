@@ -22,9 +22,9 @@ The following packages need to be installed (either from the corresponding
 
 * [git](https://git-scm.com/)
 
-* [oracle virtualbox](https://www.virtualbox.org)
+* [oracle virtualbox 5.1.30](https://www.virtualbox.org)
 
-* [vagrant](https://www.vagrantup.com)
+* [vagrant 2.0.0](https://www.vagrantup.com)
 
 # Quick Steps
 
