@@ -15,7 +15,7 @@ dom0-HW is the network component within operating-system.
 The confirguration of dom0-HW takes place inside the dom0-HW.run file in operating-system/genode-dom0-HW/run .
 
 ```
-<network dhcp="no" ip-address="192.168.218.21" subnet-mask="255.255.255.0" default-gateway="192.168.218.1" port="3001"/>
+<network dhcp="no" ip-address="192.168.217.21" subnet-mask="255.255.255.0" default-gateway="192.168.217.1" port="3001"/>
 ```
 
 This line tells dom0-HW which adress and ports to listen to.
@@ -46,6 +46,7 @@ Those binaries get meta information sent with them. Those meta infos look like t
 ```
 
 To send the binary and the description, the python script dom0_program.py is used.
+Just run "python3 dom0_program.py" inside operating-system/toolchain-host/host_dom0/ .
 A very simple example of dom0_program.py could look like this.
 
 ```
