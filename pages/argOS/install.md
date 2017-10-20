@@ -53,13 +53,33 @@ $> sudo apt-get upgrade
 $> sudo apt-get install libncurses5-dev texinfo autogen autoconf2.64 g++ \
    libexpat1-dev flex bison gperf cmake libxml2-dev libtool zlib1g-dev \
    libglib2.0-dev make pkg-config gawk subversion expect git libxml2-utils \
-   syslinux xsltproc yasm iasl lynx unzip qemu tftpd-hpa libpixman-1-dev
+   syslinux xsltproc yasm iasl lynx unzip qemu tftpd-hpa libpixman-1-dev \
+   vde2
 $> git clone https://github.com/argos-research/operating-system.git
 $> cd operating-system
 $> git checkout 1608
 $> git submodule init
 $> git submodule update
-$> vagrant up
+$> make toolchain
+$> make ports
+$> make jenkins_build_dir
+$> make jenkins_run
+```
+
+## QEMU/VDE
+```sh
+$> git clone https://github.com/mwilliamson/vde.git
+$> cd vde2
+$> autoreconf --install
+$> ./configure
+$> make
+$> sudo make install
+$> git clone https://github.com/qemu/qemu.git
+$> mkdir build
+$> cd build
+$> ../configure
+$> make
+$> sudo make install
 ```
 
 ## Testbed
