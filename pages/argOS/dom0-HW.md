@@ -14,7 +14,7 @@ folder: "argOS"
 dom0-HW is the network component within operating-system.
 The confirguration of dom0-HW takes place inside the dom0-HW.run file in operating-system/genode-dom0-HW/run .
 
-```
+```xml
 <network dhcp="no" ip-address="192.168.217.21" subnet-mask="255.255.255.0" default-gateway="192.168.217.1" port="3001"/>
 ```
 
@@ -25,7 +25,7 @@ This line tells dom0-HW which adress and ports to listen to.
 Once the configuration of dom0-HW is done, it is possible to send binaries to the oparting-system.
 Those binaries get meta information sent with them. Those meta infos look like this.
 
-```
+```xml
 <periodictask>
 <id>1</id>
 <executiontime>999999999999</executiontime>
@@ -49,7 +49,7 @@ To send the binary and the description, the python script dom0_program.py is use
 Just run "python3 dom0_program.py" inside operating-system/toolchain-host/host_dom0/ .
 A very simple example of dom0_program.py could look like this.
 
-```
+```python
 #!/usr/bin/env python3
 
 from dom0_client import *
@@ -76,7 +76,7 @@ Furthermore there is profile(...) which returns an xml file inclunding informati
 The functions called in this file are stored in dom0_client.py.
 dom0_client provides the following functions.
 
-```
+```python
 import socket
 import code
 import struct
