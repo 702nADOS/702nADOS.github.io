@@ -59,7 +59,29 @@ $> cd operating-system
 $> git checkout 1608
 $> git submodule init
 $> git submodule update
-$> vagrant up
+$> make toolchain
+$> make ports
+$> make jenkins_build_dir
+$> make jenkins_run
+```
+
+## QEMU/VDE
+```sh
+$> git clone https://github.com/mwilliamson/vde.git
+$> cd vde/vde-2
+$> autoreconf --install
+$> ./configure
+$> make
+$> sudo make install
+$> cd ../..
+$> git clone https://github.com/qemu/qemu.git
+$> cd qemu
+$> mkdir build
+$> cd build
+$> ../configure
+$> make -j
+$> sudo make install
+$> sudo ldconfig
 ```
 
 ## Testbed

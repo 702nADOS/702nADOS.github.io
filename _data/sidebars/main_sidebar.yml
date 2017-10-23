@@ -42,6 +42,9 @@ entries:
     - title: PXE
       url: /pxe.html
       output: web
+    - title: dom0-HW
+      url: /dom0-HW.html
+      output: web
 
   # - title: Contribute
   #   output: web
