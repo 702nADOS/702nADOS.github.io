@@ -31,6 +31,7 @@ cd <genode-dir>
 # for libprotobuf
 ./tool/ports/prepare_port libc
 ./tool/ports/prepare_port stdcxx
+./tool/ports/prepare_port zlib
 # for libmosquitto
 ./tool/ports/prepare_port libc
 ./tool/ports/prepare_port stdcxx
