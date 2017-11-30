@@ -165,5 +165,5 @@ Every image is configured to use the `02:DE:AD:BE:EF:FF` ethernet address and bo
 
 - [Hardkernel ODROID-U3](https://nextcloud.os.in.tum.de/s/66hmk6s8kxCjS2x/download)
 - [Raspberry Pi Model 1 B(+)](https://nextcloud.os.in.tum.de/s/vVRFCh74B499P2W/download)
-- [Avnet ZedBoard](https://nextcloud.os.in.tum.de/s/TsZNontFhgigiBg/download)
-- [Digilent Zybo](https://nextcloud.os.in.tum.de/s/uNhs1VhfSsM0OdF/download)
+- [Digilent Zybo](https://nextcloud.os.in.tum.de/s/TsZNontFhgigiBg/download)
+- [Avnet ZedBoard](https://nextcloud.os.in.tum.de/s/uNhs1VhfSsM0OdF/download)
