@@ -5,7 +5,7 @@ last_updated: March 10, 2017
 tags: [getting_started]
 summary: ""
 sidebar: main_sidebar
-permalink: /docs/install.html
+permalink: /docs/install/
 folder: "argOS"
 ---
 
