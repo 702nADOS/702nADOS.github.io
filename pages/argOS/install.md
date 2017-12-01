@@ -85,7 +85,7 @@ $> sudo ldconfig
 ```
 
 ## Testbed
-For more information see [Simulatour Coupling](/sim-coupling.html) section
+For more information see [Simulatour Coupling](sim-coupling.html) section
 ```sh
 # clone the testbed repository
 git clone https://github.com/argos-research/testbed.git
@@ -116,4 +116,4 @@ config.vm.provider "virtualbox" do |vb|
 
 # Next Steps
 
-See [Plaftorm Instructions](/platforms.html)
+See [Plaftorm Instructions](platforms.html)
