@@ -24,9 +24,12 @@ entries:
   - title: Overview
     output: web
     folderitems:
+      
     - title: Install
       url: /install.html
       output: web
+      type: homepage
+
     - title: Platform Instructions
       url: /platforms.html
       output: web
@@ -39,8 +42,8 @@ entries:
 #    - title: QEMU
 #      url: /qemu.html
 #      output: web
-    - title: PXE
-      url: /pxe.html
+    - title: DHCP / TFTP / PXE
+      url: /dhcp.html
       output: web
     - title: dom0-HW
       url: /dom0-HW.html
