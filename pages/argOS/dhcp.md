@@ -15,11 +15,16 @@ folder: "argOS"
 The vagrant machine comes with an already install DHCP service called isc-dhcpd ( https://wiki.ubuntuusers.de/ISC-DHCPD/ ).
 ISC-DHCP helps you to boot up your network and fill it with ip addresses and the distribution of genode images among your devices.
 
-The DHCP service as well as the TFTP service needed is installed at [here](install.html#operating-system-on-local-machine).
+The DHCP service as well as the TFTP service needed, is installed at [here](install.html#operating-system-on-local-machine).
 If it is not yet install please do so with:
 ```
 sudo apt install isc-dhcp-server tftpd-hpa
 ```
+
+**!! Be aware to choose the correct NIC device to bridge to. If you select a wrong device the DHCP service of your vagrant machine could influence the DHCP service in your network !!**
+
+
+
 
 
 If the services are installed there are normally started at boot up of the virtual machine within the script [bootstrap.sh](https://github.com/argos-research/operating-system/blob/d700f0251ab2f1102272c821bb0d67f56ecd09ed/bootstrap.sh).
