@@ -59,13 +59,13 @@ filename "/image.elf";
 Theses parts describe the subnet which is used for the virtual/real network the DHCP should provide with addresses and TFTP/PXE information.
 
 The subnet `10.200.40.0/21` was chosen, which means that IP-addresses in the range of `10.200.40.1` to `10.200.47.254` are possible.
-This was done due to certain internal restrictions. Nonetheless it can be changed to your preferences but mind the static IP of the bridge interface defined in `/etc/network/interfaces` in Vagrant or your local machine, which has to be adapted as well. For Vagrant it is defined within [bootstrap.sh](https://github.com/argos-research/operating-system/blob/d700f0251ab2f1102272c821bb0d67f56ecd09ed/bootstrap.sh#L15).
+This was done due to certain internal restrictions. Nonetheless it can be changed to your preferences but mind the static IP of the bridge interface defined in `/etc/network/interfaces` in Vagrant or your local machine, which has to be adapted as well for Vagrant and is defined within [bootstrap.sh](https://github.com/argos-research/operating-system/blob/d700f0251ab2f1102272c821bb0d67f56ecd09ed/bootstrap.sh#L15).
 
 ## Fixed Leases & TFTP Boot
 
 ISC-DHCP allows you to set fixed leases where certain MAC-addresses can be assigned certain IP-addresses even with additional options like TFTP servers and directories.
 
-As embedded devices often do not provide a fixed MAC-address, we came up with a MAC-address schemata that is fitting for us based on [this](https://serverfault.com/questions/40712/what-range-of-mac-addresses-can-i-safely-use-for-my-virtual-machines):
+As embedded devices often do not provide a fixed MAC-address, we came up with a MAC-address schemata that is fitting for us based on [this](https://serverfault.com/questions/40712/what-range-of-mac-addresses-can-i-safely-use-for-my-virtual-machines) suggestion:
 
 ```
   0A        -       xx        -      xx       -      xx       -      xx       -      xx
@@ -97,7 +97,7 @@ The first `/24` network `10.200.40.0/24` is used to host the virtual machines as
 The other subnets are only assigned if they are defined within the Fixed Leases block of the configuration [dhcpd.conf](https://github.com/argos-research/operating-system/blob/d700f0251ab2f1102272c821bb0d67f56ecd09ed/config-data/dhcpd.conf) file.
 The [dhcpd.conf](https://github.com/argos-research/operating-system/blob/d700f0251ab2f1102272c821bb0d67f56ecd09ed/config-data/dhcpd.conf) already contains 5 entries for every platform defined above, meaning MAC-addresses from `0A:XX:00:00:00:00` to `0A:XX:00:00:00:04` are assigned to IP-addresses from `10.200.4X.01` to `10.200.4X.05`.
 
-Each device will also be provided its unique boot image which is defined via the line:
+Each device will also be provided it's unique boot image which is defined via the line:
 
 ``` filename "<platform>/<deviceNumberForPlatform>/<imagefile>"; ```
 
@@ -105,7 +105,7 @@ The next-server specifies the TFTP server's ip-address, where the file(name) can
 
 ``` next-server 10.200.40.1; ```
 
-This means that every device will get its boot image from `10.200.40.1` but they are situated in different folders as they might be a different hardware platform or require different MAC-addresses
+This means that every device will get it's boot image from `10.200.40.1` but the images are situated in different folders as they might be a different hardware platform or require different MAC-addresses
 <div class="alert alert-info">
 <p><b>Information:</b></p><p>MAC-address might be changed by NIC driver during Genode startup.</p>
 </div>
