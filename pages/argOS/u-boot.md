@@ -153,6 +153,9 @@ saveenv
 reset
 ```
 
+# Troubleshooting & Tips
+- If `setenv` fails with the error `Can't overwrite "%variable%"`, try using `setenv -f`.
+
 # Prepared Images
 Install the images via
 ```sh
