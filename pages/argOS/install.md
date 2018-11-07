@@ -33,8 +33,6 @@ The following steps bootstrap the virtual machine.
 ```sh
 $> git clone https://github.com/argos-research/operating-system.git
 $> cd operating-system
-$> git submodule init
-$> git submodule update
 $> vagrant up
 ```
 
@@ -55,21 +53,7 @@ $> ./setup.sh
 
 ## QEMU/VDE
 ```sh
-$> git clone https://github.com/mwilliamson/vde.git
-$> cd vde/vde-2
-$> autoreconf --install
-$> ./configure
-$> make
-$> sudo make install
-$> cd ../..
-$> git clone https://github.com/qemu/qemu.git
-$> cd qemu
-$> mkdir build
-$> cd build
-$> ../configure
-$> make -j
-$> sudo make install
-$> sudo ldconfig
+$> ./qemu.sh
 ```
 
 ## Testbed
