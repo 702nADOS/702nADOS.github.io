@@ -47,7 +47,6 @@ $> sudo make run
 ```sh
 $> git clone https://github.com/argos-research/operating-system.git
 $> cd operating-system
-$> make packages
 $> ./setup.sh
 ```
 
